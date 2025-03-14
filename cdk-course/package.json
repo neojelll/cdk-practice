@@ -1,0 +1,28 @@
+{
+	"name": "cdk-course",
+	"version": "0.1.0",
+	"bin": {
+		"cdk-course": "bin/cdk-course.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"test": "vitest",
+		"cdk": "cdk"
+	},
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.147",
+		"@types/node": "22.7.9",
+		"aws-cdk": "2.1003.0",
+		"ts-node": "^10.9.2",
+		"typescript": "~5.6.3",
+		"vitest": "^3.0.8"
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.767.0",
+		"@aws-sdk/util-dynamodb": "^3.767.0",
+		"aws-cdk-lib": "2.181.1",
+		"constructs": "^10.4.2",
+		"esbuild": "^0.25.1"
+	}
+}
