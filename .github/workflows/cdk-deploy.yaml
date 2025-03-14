@@ -17,7 +17,7 @@ jobs:
 
       - name: Install web app dependencies
         working-directory: ./web
-        run: pnpm ci
+        run: npm ci
 
       - name: Build web app
         working-directory: ./web
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install deployment dependencies
         working-directory: ./cdk-course
-        run: pnpm ci
+        run: npm ci
 
       - name: cdk synth
         working-directory: ./cdk-course
