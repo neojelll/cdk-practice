@@ -17,18 +17,18 @@ jobs:
 
       - name: Install web app dependencies
         working-directory: ./web
-        run: pnpm install
+        run: npm install
 
       - name: Build web app
         working-directory: ./web
-        run: pnpm build
+        run: npm build
 
       - name: Install AWS CDK
         run: sudo npm i -g aws-cdk
 
       - name: Install deployment dependencies
         working-directory: ./cdk-course
-        run: pnpm install
+        run: npm install
 
       - name: cdk synth
         working-directory: ./cdk-course
