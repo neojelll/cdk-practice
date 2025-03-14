@@ -15,20 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Install web app dependencies
         working-directory: ./web
-        run: npm install
+        run: pnpm install
 
       - name: Build web app
         working-directory: ./web
-        run: npm run build
+        run: pnpm run build
 
       - name: Install AWS CDK
         run: sudo npm i -g aws-cdk
 
       - name: Install deployment dependencies
         working-directory: ./cdk-course
-        run: npm install
+        run: pnpm install
 
       - name: cdk synth
         working-directory: ./cdk-course
