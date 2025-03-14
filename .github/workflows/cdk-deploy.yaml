@@ -1,0 +1,43 @@
+name: cdk deploy
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install web app dependencies
+        working-directory: ./web
+        run: pnpm ci
+
+      - name: Build web app
+        working-directory: ./web
+        run: pnpm build
+
+      - name: Install AWS CDK
+        run: sudo npm i -g aws-cdk
+
+      - name: Install deployment dependencies
+        working-directory: ./cdk-course
+        run: pnpm ci
+
+      - name: cdk synth
+        working-directory: ./cdk-course
+        run: sdk synth
+
+      - name: cdk deploy
+        working-directory: ./cdk-course
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        run: cdk deploy
