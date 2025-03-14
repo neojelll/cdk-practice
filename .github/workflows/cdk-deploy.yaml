@@ -32,7 +32,7 @@ jobs:
 
       - name: cdk synth
         working-directory: ./cdk-course
-        run: sdk synth
+        run: cdk synth
 
       - name: cdk deploy
         working-directory: ./cdk-course
