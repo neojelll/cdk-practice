@@ -21,7 +21,7 @@ jobs:
 
       - name: Build web app
         working-directory: ./web
-        run: npm build
+        run: npm run build
 
       - name: Install AWS CDK
         run: sudo npm i -g aws-cdk
