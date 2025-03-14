@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib'
 import { Distribution, OriginAccessIdentity } from 'aws-cdk-lib/aws-cloudfront'
-import { S3StaticWebsiteOrigin } from 'aws-cdk-lib/aws-cloudfront-origins'
+import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins'
 import { Bucket } from 'aws-cdk-lib/aws-s3'
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment'
 // import {
@@ -125,7 +125,9 @@ export class CdkCourseStack extends cdk.Stack {
 		const distribution = new Distribution(this, 'WebDeploymentDistribution', {
 			defaultRootObject: 'index.html',
 			defaultBehavior: {
-				origin: new S3StaticWebsiteOrigin(deploymentBucket),
+				origin: new S3Origin(deploymentBucket, {
+					originAccessIdentity: originIdentity,
+				}),
 			},
 		})
 
